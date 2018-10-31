@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- properties file load -->
+	<context:property-placeholder location="classpath:kopek.bilgileri.properties" />
+
+	<!-- Define your beans here -->
+
+
+
+	<bean id="myDailyMeal" class="com.mss.springdemo.EtYemegi">
+	</bean>
+
+
+	<bean id="myCat" class="com.mss.springdemo.Kedi">
+	<!-- constructor injection -->
+	<constructor-arg ref="myDailyMeal"/>
+	</bean>
+	
+	<bean id="myDog" class="com.mss.springdemo.Kopek">
+	<!-- setter injection -->
+	<property name="gunlukYemekService" ref="myDailyMeal" />
+		<property name="kopekSesi" value="${zeytinin.sesi}" /> 
+		<property name="kopekIsmi" 
+			value="'Zeytin'" />
+	</bean>
+
+</beans>
+
+
+
+
+
